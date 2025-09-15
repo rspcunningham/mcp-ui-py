@@ -10,7 +10,7 @@ from src.mcp_ui import UiResource
 def test_client_integration_external_url():
     """Test that our UiResource matches the expected client format for external URLs."""
     # Create a UiResource like our server would
-    result = UiResource.from_external_url(uri="ui://external-url", url="https://example.com")
+    result = UiResource.from_url(uri="ui://external-url", url="https://example.com")
     
     # Simulate what the MCP server would send to the client
     if hasattr(result.resource, 'model_dump'):
@@ -86,7 +86,7 @@ def test_client_integration_html():
 
 def test_client_payload_structure():
     """Test that our payload structure exactly matches the expected client format."""
-    result = UiResource.from_external_url(uri="ui://test", url="https://test.com")
+    result = UiResource.from_url(uri="ui://test", url="https://test.com")
     
     # Get the JSON structure
     if hasattr(result.resource, 'model_dump'):

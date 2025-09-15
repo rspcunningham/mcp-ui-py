@@ -3,8 +3,8 @@ from src.mcp_ui import UiResource
 
 
 def test_from_external_url():
-    """Test UiResource.from_external_url creates correct structure."""
-    result = UiResource.from_external_url(uri="ui://external-url", url="https://example.com")
+    """Test UiResource.from_url creates correct structure."""
+    result = UiResource.from_url(uri="ui://external-url", url="https://example.com")
     
     # Test the structure directly
     assert result.meta is None
@@ -33,7 +33,7 @@ def test_from_html():
 def test_uri_validation():
     """Test that URI must start with 'ui://'."""
     with pytest.raises(ValueError, match="URI must start with 'ui://'"):
-        UiResource.from_external_url(uri="http://invalid", url="https://example.com")
+        UiResource.from_url(uri="http://invalid", url="https://example.com")
     
     with pytest.raises(ValueError, match="URI must start with 'ui://'"):
         UiResource.from_html(uri="invalid://test", html="<p>test</p>")
@@ -41,7 +41,7 @@ def test_uri_validation():
 
 def test_direct_constructor():
     """Test direct UiResource constructor."""
-    result = UiResource(uri="ui://test", mimeType="text/plain", text="test content")
+    result = UiResource(uri="ui://test", mime_type="text/plain", text="test content")
     
     # Test the structure directly
     assert result.meta is None

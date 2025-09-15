@@ -1,7 +1,6 @@
 """
 Integration test that runs server.py in the background and tests client.py output.
 """
-import asyncio
 import json
 import os
 import subprocess
@@ -84,14 +83,14 @@ def test_server_client_integration():
         try:
             # Use eval to parse the pprint output (safe in test context)
             result = eval(dict_str)
-        except:
+        except Exception:
             # If eval fails, try to extract JSON from the output field
             import re
             json_match = re.search(r'"output":\s*\'([^\']+)\'', dict_str)
             if json_match:
                 json_str = json_match.group(1)
                 # Parse the JSON to validate structure
-                json_data = json.loads(json_str)
+                json.loads(json_str)
                 
                 # Create a mock result for validation
                 result = {

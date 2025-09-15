@@ -8,7 +8,7 @@ url = "https://www.google.com"
 
 @mcp.tool(name="show_external_url", description="Creates a UI resource displaying an external URL")
 def show_external_url() -> UiResource:
-    return UiResource.from_external_url(uri="ui://external-url", url=url)
+    return UiResource.from_url(uri="ui://external-url", url=url)
 
 @mcp.tool(name="show_html", description="Creates a UI resource displaying an HTML string")
 def show_html() -> UiResource:
